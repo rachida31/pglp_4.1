@@ -1,5 +1,8 @@
 package uvsq.M1.td1.Exo4_1;
 import static org.junit.Assert.*;
+
+import java.time.LocalDate;
+
 import org.junit.*;
 
 import uvsq.M1.td1.Exo4_1.Personne.PersonneBuilder;
@@ -7,12 +10,14 @@ import uvsq.M1.td1.Exo4_1.Personne.PersonneBuilder;
 public class TestPersonne {
 
 	private Personne p;
-	private PersonneBuilder b;
 	private Fonction fonc;
+	private Telephone tel;
 @Before()
 public void setUp() {
-b=new PersonneBuilder("aissou", "rachel", fonc.directeur);
-p=new Personne(b);
+p=new PersonneBuilder("aissou", "rachel", fonc.directeur).
+date(LocalDate.parse("2011-12-01")).
+addNumeroTelephone(new ClasseTele(tel.fixePerso,"06 89 51 12 53")).build();
+
 }
 @Test
 public void TestA()
@@ -22,7 +27,12 @@ public void TestA()
 	assertTrue(p.getFonc()==fonc.directeur);
 
 }
-@After()
-public void 
+@Test
+public void TestDate()
+{
+	assertTrue(p.getDate()==LocalDate.parse("2011-12-01"));
+}
+/*@After()
+public void */
 
 }
