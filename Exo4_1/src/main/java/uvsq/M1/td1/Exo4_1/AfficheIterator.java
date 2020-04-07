@@ -17,7 +17,6 @@ Iterator<InterfacePersonne>{
 	public void afficheIterator() {
 
 	    Iterator<InterfacePersonne> iterator = this.getList().iterator();
-		System.out.println("0000000000000000000");
 
 	    while(iterator.hasNext()) {
            
