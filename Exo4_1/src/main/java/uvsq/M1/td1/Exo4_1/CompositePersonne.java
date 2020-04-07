@@ -3,7 +3,7 @@ package uvsq.M1.td1.Exo4_1;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class CompositePersonne extends  InterfacePersonne{
+public class CompositePersonne implements  InterfacePersonne{
 	//Collection of child graphics.
 		private final ArrayList<InterfacePersonne> personnel ;
 		private String NomGroupe;
@@ -23,15 +23,15 @@ public class CompositePersonne extends  InterfacePersonne{
 		}
 		public  ArrayList<InterfacePersonne>getPersonnel()
 		{
-			
-		return ( ArrayList<InterfacePersonne>) Collections.unmodifiableList(this.personnel);
+		return this.personnel;	
+		//return ( ArrayList<InterfacePersonne>) Collections.unmodifiableList(this.personnel);
 
 		}
 		public void print()
 		{
 			System.out.println("Le nom du groupe est : "+this.NomGroupe);
 
-			  for (InterfacePersonne per : personnel) {
+			  for (InterfacePersonne per :personnel) {
 			        per.print();  //Delegation
 			    }
 		}

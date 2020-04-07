@@ -2,7 +2,7 @@ package uvsq.M1.td1.Exo4_1;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
-public final class Personne extends InterfacePersonne {
+public final class Personne implements  InterfacePersonne {
 	
 	private final String nom;	
 	private final String prenom;
