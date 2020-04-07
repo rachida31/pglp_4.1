@@ -2,26 +2,28 @@ package uvsq.M1.td1.Exo4_1;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
-public final class Personne {
+public final class Personne extends InterfacePersonne {
 	
 	private final String nom;	
 	private final String prenom;
 	private final List<ClasseTele> tel;
 	private final Fonction fonc;
 	private final  LocalDate date;
-	
+	private final  int   idPerso;
+
 public static class PersonneBuilder {
 	private final String nom;	
 	private final String prenom;
 	private  List<ClasseTele> tel=new ArrayList<ClasseTele>();
 	private final Fonction fonc;
 	private   LocalDate date;
-	
+	private static    int idPerso;
 		
 		public PersonneBuilder(String nom, String prenom, Fonction fonc) {
 			this.nom = nom;
 			this.prenom = prenom;
 			this.fonc = fonc;
+			this.idPerso+=1;  
 		}
 		
 		public PersonneBuilder date(LocalDate date) {
@@ -47,18 +49,8 @@ Personne(PersonneBuilder builder) {
 	fonc = builder.fonc;
 	date = builder.date;
 	tel = builder.tel;
+	idPerso=builder.idPerso;
 }
-	
-	/*public Personne (String nom,String prenom,Telephone tel,Fonction fonc,LocalDate date )
-	
-	{
-		this.nom=nom;
-		this.prenom=prenom;
-		this.fonc=fonc;
-		this.tel=new ArrayList();
-		this.date=date;
-	
-	}*/
 
 	public String getNom() {
 		return nom;
@@ -67,9 +59,14 @@ Personne(PersonneBuilder builder) {
 	public String getPrenom() {
 		return prenom;
 	}
+	public int getIdPersonne() {
+		return this.idPerso;
+	}
 
 	public List<ClasseTele> getTel() {
-		return tel;
+		return ( List<ClasseTele>) Collections.unmodifiableList(this.tel);
+
+		
 	}
 
 	public Fonction getFonc() {
@@ -78,5 +75,10 @@ Personne(PersonneBuilder builder) {
 
 	public LocalDate getDate() {
 		return date;
+	}
+
+	public void print() {
+		System.out.println(" Je suis le personnel numéro  : " + this.idPerso +" Mon nom est "+this.nom+" "+this.prenom);
+		
 	}
 }

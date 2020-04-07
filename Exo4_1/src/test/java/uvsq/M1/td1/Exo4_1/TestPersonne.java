@@ -30,9 +30,13 @@ public void TestA()
 @Test
 public void TestDate()
 {
-	assertTrue(p.getDate()==LocalDate.parse("2011-12-01"));
+	assertTrue(p.getDate().equals(LocalDate.parse("2011-12-01")));
 }
-/*@After()
-public void */
+
+@After()
+public void end()
+{
+	
+}
 
 }
